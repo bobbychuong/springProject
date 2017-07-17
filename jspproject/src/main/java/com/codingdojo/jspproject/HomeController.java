@@ -1,17 +1,22 @@
 package com.codingdojo.jspproject;
 
 import java.util.Date;
+
+
 import java.sql.Timestamp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("sessionAttribute")
 public class HomeController {
 	@RequestMapping("/")
 	public String index(Model model) {
-		return "index.jsp";
+		model.addAttribute("sessionAttribute", "exampleData");
+		return "redirect:/";
 	}
 	@RequestMapping("/date")
 	public String d(Model model) {
